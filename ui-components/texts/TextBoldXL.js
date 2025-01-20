@@ -5,7 +5,7 @@ import { textSize } from '../../constants/textSize';
 const TextBoldXL = ({ children, blue = false, style }) => {
 	return (
 		<Text
-			style={[styles.txt, { color: blue ? colors.blue : colors.dark }, style]}
+			style={[styles.txt, { color: blue ? colors.red : colors.dark }, style]}
 		>
 			{children}
 		</Text>
