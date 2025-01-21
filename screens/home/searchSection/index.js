@@ -4,8 +4,12 @@ import { spaces } from '../../../constants/spaces';
 import SearchInput from '../../../ui-components/inputs/SearchInput';
 import BrandsList from './components/BrandsList';
 
-export default SearchSection = () => {
-	const [inputValue, setInputValue] = useState('');
+export default SearchSection = ({
+	inputValue,
+	setInputValue,
+	selectedBrand,
+	setSelectedBrand,
+}) => {
 	return (
 		<View style={styles.container}>
 			<SearchInput
@@ -13,15 +17,20 @@ export default SearchSection = () => {
 				value={inputValue}
 				onChangeText={setInputValue}
 			/>
-			<BrandsList />
+			<BrandsList
+				selectedBrand={selectedBrand}
+				setSelectedBrand={setSelectedBrand}
+			/>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
 	container: {
-		borderWidth: 1,
+		// borderWidth: 1,
 		flex: 120,
+		minHeight: 120,
 		justifyContent: 'space-evenly',
+		alignItems: 'center',
 	},
 });
