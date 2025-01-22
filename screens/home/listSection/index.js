@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import { IS_SMALL_SCREEN } from '../../../constants/sizes';
 import { spaces } from '../../../constants/spaces';
 import Banner from '../components/Banner';
 import ShoesList from './components/ShoesList';
@@ -16,6 +17,6 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 240,
 		paddingVertical: spaces.l,
-		minHeight: 340,
+		minHeight: IS_SMALL_SCREEN ? 340 : 300,
 	},
 });

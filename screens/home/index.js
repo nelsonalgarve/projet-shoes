@@ -11,7 +11,7 @@ export default function HomeScreen() {
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={{ width: '100%', backgroundColor: '#000000', height: 60 }} />
-			<ScrollView style={styles.ScrollViewContainer}>
+			<ScrollView style={styles.ScrollViewContainer} bounces={false}>
 				<SearchSection
 					inputValue={inputValue}
 					setInputValue={setInputValue}

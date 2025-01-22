@@ -1,17 +1,23 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, useWindowDimensions, View } from 'react-native';
+import { IS_LARGE_SCREEN } from '../../../constants/sizes';
 import { spaces } from '../../../constants/spaces';
 import { shoes } from '../../../data/shoes';
 import Banner from '../components/Banner';
 import HorizontalCard from './components/HorizontalCard';
 
 export default NewsSection = ({ selectedBrand }) => {
-	// console.log(shoes);
+	const { height } = useWindowDimensions();
+	const landscapeStyle = {
+		flex: 160,
+		paddingVertical: spaces.s,
+		minHeight: 240,
+	};
 
 	const item = shoes
 		.find((item) => item.brand === selectedBrand)
 		.stock.find((item) => item.new);
 	return (
-		<View style={styles.container}>
+		<View style={height < 400 ? landscapeStyle : styles.container}>
 			<Banner text="Nouveautés" />
 			<HorizontalCard item={item} />
 		</View>
@@ -20,9 +26,8 @@ export default NewsSection = ({ selectedBrand }) => {
 
 const styles = StyleSheet.create({
 	container: {
-		// borderWidth: 1,
 		flex: 160,
 		paddingVertical: spaces.m,
-		minHeight: 160,
+		minHeight: IS_LARGE_SCREEN ? 320 : 160,
 	},
 });

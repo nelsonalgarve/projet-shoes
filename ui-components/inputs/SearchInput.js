@@ -1,5 +1,5 @@
 import EvilIcons from '@expo/vector-icons/EvilIcons';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { Platform, StyleSheet, TextInput, View } from 'react-native';
 import { colors } from '../../constants/colors';
 import { radius } from '../../constants/radius';
 import { ICON_SIZE } from '../../constants/sizes';
@@ -25,6 +25,8 @@ export default function SearchInput({ placeHolder, value, onChangeText }) {
 }
 const styles = StyleSheet.create({
 	inputContainer: {
+		flex: 1,
+		width: '100%',
 		flexDirection: 'row',
 		alignItems: 'center',
 		backgroundColor: colors.white,
@@ -35,6 +37,8 @@ const styles = StyleSheet.create({
 	},
 	searchIcon: {
 		marginHorizontal: spaces.m,
+		// marginBottom: Platform.OS === 'android' ? spaces.xs : 0,
+		marginBottom: Platform.select({ android: spaces.xs, ios: 0 }),
 	},
 	input: {
 		flex: 1,

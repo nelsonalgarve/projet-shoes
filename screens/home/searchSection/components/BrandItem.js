@@ -1,7 +1,11 @@
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { colors } from '../../../../constants/colors';
 import { radius } from '../../../../constants/radius';
-import { ICON_SIZE } from '../../../../constants/sizes';
+import {
+	ICON_SIZE,
+	IS_SMALL_SCREEN,
+	SMALL_ICON_SIZE,
+} from '../../../../constants/sizes';
 import { spaces } from '../../../../constants/spaces';
 import { brands } from '../../../../data/brands';
 import TextBoldL from '../../../../ui-components/texts/TextBoldM';
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		borderRadius: radius.full,
 		backgroundColor: colors.blue,
-		padding: spaces.s,
+		padding: IS_SMALL_SCREEN ? spaces.xs : spaces.s,
 	},
 	iconContainer: {
 		backgroundColor: colors.white,
@@ -54,8 +58,8 @@ const styles = StyleSheet.create({
 		padding: spaces.s,
 	},
 	image: {
-		width: ICON_SIZE,
-		height: ICON_SIZE,
+		width: IS_SMALL_SCREEN ? SMALL_ICON_SIZE : ICON_SIZE,
+		height: IS_SMALL_SCREEN ? SMALL_ICON_SIZE : ICON_SIZE,
 		resizeMode: 'contain',
 	},
 	brandText: {
