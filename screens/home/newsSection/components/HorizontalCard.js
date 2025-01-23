@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
 		transform: [
 			{ rotate: '-20deg' },
 			{ translateX: -spaces.m },
-			{ translateY: -spaces.l },
+			{ translateY: IS_LARGE_SCREEN ? -spaces.xl : -spaces.l },
 			{ scale: IS_LARGE_SCREEN ? 1 : 1.3 },
 		],
 	},

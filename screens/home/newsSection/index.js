@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { IS_LARGE_SCREEN } from '../../../constants/sizes';
 import { spaces } from '../../../constants/spaces';
@@ -6,6 +7,7 @@ import Banner from '../components/Banner';
 import HorizontalCard from './components/HorizontalCard';
 
 export default NewsSection = ({ selectedBrand }) => {
+	const navigation = useNavigation();
 	const { height } = useWindowDimensions();
 	const landscapeStyle = {
 		flex: 160,
@@ -16,10 +18,14 @@ export default NewsSection = ({ selectedBrand }) => {
 	const item = shoes
 		.find((item) => item.brand === selectedBrand)
 		.stock.find((item) => item.new);
+
+	const navigateToNewsList = () => {
+		navigation.navigate('NewsList');
+	};
 	return (
 		<View style={height < 400 ? landscapeStyle : styles.container}>
-			<Banner text="Nouveautés" />
 			<HorizontalCard item={item} />
+			<Banner text="Nouveautés" navigate={navigateToNewsList} />
 		</View>
 	);
 };
@@ -27,6 +33,7 @@ export default NewsSection = ({ selectedBrand }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 160,
+		flexDirection: 'column-reverse',
 		paddingVertical: spaces.m,
 		minHeight: IS_LARGE_SCREEN ? 320 : 160,
 	},

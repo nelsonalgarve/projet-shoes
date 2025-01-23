@@ -5,7 +5,7 @@ import ListSection from './listSection';
 import NewsSection from './newsSection';
 import SearchSection from './searchSection';
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
 	const [inputValue, setInputValue] = useState('');
 	const [selectedBrand, setSelectedBrand] = useState('nike');
 	return (
@@ -18,7 +18,11 @@ export default function HomeScreen() {
 					selectedBrand={selectedBrand}
 					setSelectedBrand={setSelectedBrand}
 				/>
-				<ListSection selectedBrand={selectedBrand} inputValue={inputValue} />
+				<ListSection
+					selectedBrand={selectedBrand}
+					inputValue={inputValue}
+					navigation={navigation}
+				/>
 				<NewsSection selectedBrand={selectedBrand} />
 			</ScrollView>
 			<View

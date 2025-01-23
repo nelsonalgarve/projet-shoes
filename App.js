@@ -1,4 +1,6 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
+import StackNavigator from './navigators/StackNavigator';
 import HomeScreen from './screens/home/index';
 
 export default function App() {
@@ -9,5 +11,11 @@ export default function App() {
 		SemiBold: require('./assets/fonts/Montserrat-SemiBold.ttf'),
 	});
 
-	return fontsLoaded && <HomeScreen />;
+	return (
+		fontsLoaded && (
+			<NavigationContainer>
+				<StackNavigator />
+			</NavigationContainer>
+		)
+	);
 }
