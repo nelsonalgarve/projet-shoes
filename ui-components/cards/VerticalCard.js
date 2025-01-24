@@ -31,7 +31,9 @@ export default function VerticalCard({ item, listScreen = false }) {
 						</View>
 						{listScreen ? (
 							<View style={styles.bottomDescriptionContainer}>
-								<TextMediumM>{item.price} €</TextMediumM>
+								<View style={styles.priceContainer}>
+									<TextMediumM>{item.price} €</TextMediumM>
+								</View>
 								<View style={styles.colorsContainer}>
 									{colors.map((color) => (
 										<View
@@ -102,14 +104,21 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		paddingHorizontal: spaces.s,
 	},
+	priceContainer: {
+		width: '50%',
+	},
 	colorsContainer: {
 		flexDirection: 'row',
+		width: '50%',
+		justifyContent: 'flex-end',
 	},
 	colorItem: {
 		width: spaces.m,
 		height: spaces.m,
 		borderRadius: radius.full,
 		marginHorizontal: spaces.xs,
+		borderWidth: 1,
+		borderColor: colors.grey,
 	},
 	btn: {
 		position: 'absolute',
