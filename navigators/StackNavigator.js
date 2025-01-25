@@ -2,6 +2,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Pressable } from 'react-native';
 import { colors } from '../constants/colors';
+import Details from '../screens/details';
 import HomeScreen from '../screens/home';
 import List from '../screens/list';
 import NewsList from '../screens/newsList';
@@ -35,6 +36,7 @@ export default function StackNavigator() {
 				component={NewsList}
 				options={{ title: 'Nouveautés' }}
 			/>
+			<Stack.Screen name="Details" component={Details} />
 		</Stack.Navigator>
 	);
 }
