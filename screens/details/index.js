@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { SCREEN_HEIGTH } from '../../constants/sizes';
 import { spaces } from '../../constants/spaces';
@@ -13,19 +14,30 @@ export default function Details() {
 	const imageSource = data.items[0].image;
 	const images = data.items.map((item) => item.image);
 	const sizes = data.items[0].sizes;
+	const [selectedImage, setSelectedImage] = useState(data.items[0].image);
+	const [selectedSize, setSelectedSize] = useState();
+	console.log(selectedSize);
 
 	return (
 		<View style={styles.mainContainer}>
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<View style={styles.container}>
-					<DetailsImage source={imageSource} />
+					<DetailsImage source={selectedImage} />
 					<DetailsDescription
 						name={data.name}
 						price={data.price}
 						description={data.description}
 					/>
-					<Gallery images={images} />
-					<Sizes sizes={sizes} />
+					<Gallery
+						images={images}
+						setSelectedImage={setSelectedImage}
+						selectedImage={selectedImage}
+					/>
+					<Sizes
+						sizes={sizes}
+						selectedSize={selectedSize}
+						setSelectedSize={setSelectedSize}
+					/>
 					<View style={styles.btnContainer}>
 						<CustomButton
 							text="Ajouter au panier"

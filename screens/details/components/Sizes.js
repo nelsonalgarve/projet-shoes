@@ -1,11 +1,11 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { colors } from '../../../constants/colors';
 import { radius } from '../../../constants/radius';
 import { spaces } from '../../../constants/spaces';
 import TextBoldXL from '../../../ui-components/texts/TextBoldXL';
 import TextMediumM from '../../../ui-components/texts/TextMediumM';
 
-export default function Sizes({ sizes }) {
+export default function Sizes({ sizes, setSelectedSize, selectedSize }) {
 	return (
 		<View style={styles.container}>
 			<TextBoldXL style={styles.title}>Tailles</TextBoldXL>
@@ -17,17 +17,31 @@ export default function Sizes({ sizes }) {
 				{Array(9)
 					.fill(0)
 					.map((_, index) => (
-						<View
+						<TouchableOpacity
+							activeOpacity={0.8}
+							onPress={() => {
+								if (sizes.includes(index + 37)) setSelectedSize(index + 37);
+							}}
 							key={index}
 							style={[
 								styles.sizeContainer,
-								sizes.includes(index + 37)
+								selectedSize === index + 37
+									? styles.selectedSizeContainer
+									: sizes.includes(index + 37)
 									? styles.availableSizeContainer
 									: styles.unavailableSizeContainer,
 							]}
 						>
-							<TextMediumM style={styles.sizeText}>{index + 37}</TextMediumM>
-						</View>
+							<TextMediumM
+								style={[
+									selectedSize === index + 37
+										? styles.selectedsizeText
+										: styles.sizeText,
+								]}
+							>
+								{index + 37}
+							</TextMediumM>
+						</TouchableOpacity>
 					))}
 			</ScrollView>
 		</View>
@@ -54,6 +68,16 @@ const styles = StyleSheet.create({
 		justfyContent: 'center',
 		alignItems: 'center',
 		borderWidth: 1,
+		marginBottom: spaces.s,
+	},
+	selectedSizeContainer: {
+		backgroundColor: colors.blue,
+		borderColor: colors.blue,
+		elevation: 4,
+		shadowColor: colors.dark,
+		shadowOffset: { width: 2, height: 2 },
+		shadowRadius: 4,
+		shadowOpacity: 0.4,
 	},
 	availableSizeContainer: {
 		backgroundColor: colors.light,
@@ -68,5 +92,8 @@ const styles = StyleSheet.create({
 	},
 	sizeText: {
 		color: colors.dark,
+	},
+	selectedsizeText: {
+		color: colors.white,
 	},
 });
