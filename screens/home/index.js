@@ -8,6 +8,7 @@ import SearchSection from './searchSection';
 export default function HomeScreen({ navigation }) {
 	const [inputValue, setInputValue] = useState('');
 	const [selectedBrand, setSelectedBrand] = useState('nike');
+
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={{ width: '100%', backgroundColor: '#000000', height: 60 }} />

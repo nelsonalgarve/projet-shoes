@@ -1,4 +1,4 @@
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, Platform, StyleSheet, View } from 'react-native';
 import { SCREEN_WIDTH } from '../../../constants/sizes';
 import { spaces } from '../../../constants/spaces';
 
@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
 	},
 	imageStand: {
 		position: 'absolute',
-		bottom: 60,
+		bottom: Platform.select({ ios: 40, android: 70 }),
 	},
 });

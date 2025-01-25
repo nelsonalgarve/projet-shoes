@@ -8,7 +8,7 @@ import TextBoldXL from '../../../../ui-components/texts/TextBoldXL';
 import TextMediumM from '../../../../ui-components/texts/TextMediumM';
 import Touchable from '../../../../ui-components/touchable/Touchable';
 
-export default function HorizontalCard({ item }) {
+export default function HorizontalCard({ item, onPress }) {
 	const { height } = useWindowDimensions();
 	const landscapeImageStyle = {
 		width: '100%',
@@ -22,7 +22,7 @@ export default function HorizontalCard({ item }) {
 	};
 	return (
 		<View style={styles.container}>
-			<Touchable style={styles.touchableContainer}>
+			<Touchable style={styles.touchableContainer} onPress={onPress}>
 				<View style={styles.touchableContainer}>
 					<View style={styles.descriptionContainer}>
 						<View>
